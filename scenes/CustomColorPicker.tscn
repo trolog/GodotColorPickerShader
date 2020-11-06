@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://art/WoodRun.png" type="Texture" id=1]
+[ext_resource path="res://scripts/AnimatedSprite.gd" type="Script" id=2]
+[ext_resource path="res://shader/Character_Editor.tres" type="Material" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[node name="CustomColorPicker" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 784, 224 )
+scale = Vector2( 9, 9 )
+frames = SubResource( 7 )
+frame = 5
+script = ExtResource( 2 )
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+margin_left = 264.0
+margin_top = 160.0
+margin_right = 504.0
+margin_bottom = 208.0
+align = 2
+color = Color( 0.988235, 0.027451, 0.00392157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorPickerButton"]
+margin_top = -16.0
+margin_right = 81.0
+margin_bottom = -2.0
+text = "HAIR COLOR"
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="."]
+margin_left = 264.0
+margin_top = 264.0
+margin_right = 504.0
+margin_bottom = 312.0
+color = Color( 0.921569, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ColorPickerButton2"]
+margin_top = -16.0
+margin_right = 81.0
+margin_bottom = -2.0
+text = "TOP COLOR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorPickerButton3" type="ColorPickerButton" parent="."]
+margin_left = 264.0
+margin_top = 368.0
+margin_right = 504.0
+margin_bottom = 416.0
+color = Color( 1, 0, 0.984314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="ColorPickerButton3"]
+margin_top = -16.0
+margin_right = 81.0
+margin_bottom = -2.0
+text = "BOTTOM COLOR
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="color_changed" from="ColorPickerButton" to="AnimatedSprite" method="_on_ColorPickerButton_color_changed"]
+[connection signal="color_changed" from="ColorPickerButton2" to="AnimatedSprite" method="_on_ColorPickerButton2_color_changed"]
+[connection signal="color_changed" from="ColorPickerButton3" to="AnimatedSprite" method="_on_ColorPickerButton3_color_changed"]
